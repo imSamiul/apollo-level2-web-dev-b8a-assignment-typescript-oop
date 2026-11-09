@@ -77,4 +77,20 @@ class Manager extends Employee {
 const manager = new Manager('Alice', 50000, 'Engineering');
 manager.getDetails();
 manager.getRoleInfo();
+async function validateAgeAsync(age) {
+    return new Promise((resolve, reject) => {
+        if (age >= 18) {
+            setTimeout(() => {
+                resolve('Access Granted');
+            }, 1000);
+        }
+        else {
+            reject(new Error('Access Denied: Must be 18 or older'));
+        }
+    });
+}
+async () => {
+    await validateAgeAsync(20);
+    await validateAgeAsync(15);
+};
 export {};
